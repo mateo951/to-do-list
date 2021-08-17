@@ -7,7 +7,7 @@ Built With
 - HTML, CSS, JS, ES6
 - Linters, Node.js, Git, Flexbox, Webpack
 
-[Portolio Live Demo](https://mateo951.github.io/to-do-list/)
+[Live Demo](https://mateo951.github.io/to-do-list/)
 
 To get a local copy up and running follow these simple example steps.
 
