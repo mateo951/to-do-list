@@ -1,7 +1,7 @@
 {
   "name": "to-do-list",
   "version": "1.0.0",
-  "description": "The project's goal is to learn how to use webpack. \"To-do list\" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete. You will build a simple website that allows for doing that, and you will do it using ES6 and Webpack!",
+  "description": "",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -38,6 +38,5 @@
     "webpack": "^5.50.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "main": "webpack.config.js"
+  }
 }
