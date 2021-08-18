@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
 </head>
+
 <body>
-    <div>To Do List</div>
+  <h1>To Do List</h1>
+  <div>
+    <ul>
+      <li class="input">
+        <h2 onchange="">List's name</h2>
+        <img src="https://img.icons8.com/windows/32/000000/process.png" alt="process icon"/>
+      </li>
+      <li class="input">
+        <form action="get">
+          <input id="inputTask" type="text" placeholder="Add to list...">
+          <img id="enterIcon" src="https://img.icons8.com/material-outlined/24/000000/enter-2.png" alt="process icon"/>
+        </form>
+      </li>
+    </ul>
+    <div id="clearCompleted">
+      <p>Clear all completed</p>
+    </div>
+  </div>
 </body>
+
 </html>
