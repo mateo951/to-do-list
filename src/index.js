@@ -1,36 +1,27 @@
 /* eslint-disable */
-import _ from 'lodash'; /* eslint-enable */
+import _, { intersection } from 'lodash'; /* eslint-enable */
 import './style.css';
+import Interactions from './modules/interactions.js';
+import Tasks from './modules/tasks.js';
 
-const tasks = [
-  {
-    description: 'Finish tasks in Microverse',
-    completed: false,
-    index: null,
-  },
-  {
-    description: 'Meet with mentees',
-    completed: false,
-    index: null,
-  },
-  {
-    description: 'Study FrontEnd Masters course',
-    completed: false,
-    index: null,
-  },
-  {
-    description: 'Wash dishes',
-    completed: false,
-    index: null,
-  },
-];
+document.querySelector('#submitBttn').addEventListener('click', () => {
+  Interactions.addTask();
+});
 
-const displayTasks = () => {
-  const ul = document.querySelector('ul');
-  for (let i = 0; i < tasks.length; i += 1) {
-    tasks[i].index = i;
-    ul.innerHTML += `<li><input type="checkbox"><h3>${tasks[i].description}</h3><img src="https://img.icons8.com/ios-glyphs/30/000000/menu-2.png"/>`;
+document.querySelector('#formTask').addEventListener('submit', () => {
+  Interactions.addTask();
+});
+
+function CheckLocalInput() {
+  const data = JSON.parse(localStorage.getItem('data'));
+  if (data !== null) {
+    Tasks.initializeTasks(data);
+    for (let i = 0; i < data.length; i += 1) {
+      if (Interactions.hasValue(data[i])) {
+        Interactions.updateDisplay(data[i]);
+      }
+    }
   }
-};
+}
 
-displayTasks();
+CheckLocalInput();
