@@ -25,4 +25,3 @@ function CheckLocalInput() {
 }
 
 CheckLocalInput();
-// window.localStorage.removeItem('data');
