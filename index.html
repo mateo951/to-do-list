@@ -15,14 +15,15 @@
         <h2 onchange="">List's name</h2>
         <img src="https://img.icons8.com/windows/32/000000/process.png" alt="process icon"/>
       </li>
-      <li class="input">
-        <form action="get">
+      <li>
+        <form id="formTask" class="input" action="#">
           <input id="inputTask" type="text" placeholder="Add to list...">
-          <img id="enterIcon" src="https://img.icons8.com/material-outlined/24/000000/enter-2.png" alt="process icon"/>
+          <button type="button" id="submitBttn"></button>
         </form>
       </li>
+      <!-- beforeend -->
     </ul>
-    <div id="clearCompleted">
+    <div id="clearCompleted"> 
       <p>Clear all completed</p>
     </div>
   </div>
