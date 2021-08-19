@@ -42,7 +42,7 @@ h1 {
 
 input[type=image] {
   background-repeat: no-repeat;
-  width: 15px;
+  width: 25px;
 }
 
 h2 {
@@ -93,4 +93,18 @@ ul {
   margin: auto;
   margin-top: 5em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#submitBttn {
+  background: url('https://img.icons8.com/material-outlined/24/000000/enter-2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 35px;
+  border: none;
+  height: 35px;
+  margin-left: 20px;
+}
+
+.line-through {
+  text-decoration: line-through;
 }
