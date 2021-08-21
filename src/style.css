@@ -71,7 +71,6 @@ input:focus {
 
 li {
   font-size: 16px;
-  border-bottom: 1px solid lightgrey;
   padding: 7px;
   color: black;
   height: 35px;
@@ -91,8 +90,25 @@ ul li {
 ul {
   width: 480px;
   margin: auto;
+}
+
+#divContainer {
+  margin: auto;
+  width: 480px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#formUl {
   margin-top: 5em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 0;
+}
+
+#spawnTasks {
+  margin-top: 0;
+}
+
+#spawnTasks li {
+  border-bottom: 1px solid lightgrey;
 }
 
 #submitBttn {
@@ -107,4 +123,43 @@ ul {
 
 .line-through {
   text-decoration: line-through;
+}
+
+.edit {
+  display: none;
+}
+
+.editInput {
+  height: 49px;
+  flex-basis: 90%;
+  outline: none;
+  padding-left: 15px;
+  font-size: 17px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background: lightgoldenrodyellow;
+}
+
+.editLi {
+  background: lightgoldenrodyellow;
+}
+
+.deleteIcon {
+  width: 30px;
+  padding-right: 30px;
+}
+
+button {
+  border: none;
+  color: rgb(22, 21, 21);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #ddd;
 }
