@@ -9,6 +9,11 @@ Built With
 
 [Live Demo](https://mateo951.github.io/to-do-list/)
 
+![Alt text](./src/demo.png?raw=true)
+
+
+
+
 To get a local copy up and running follow these simple example steps.
 
 - On your terminal and run the following command to clone the repository
