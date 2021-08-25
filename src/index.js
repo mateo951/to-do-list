@@ -4,7 +4,7 @@ import './style.css';
 import Interactions from './modules/interactions.js';
 import Tasks from './modules/tasks.js';
 
-document.querySelector('#formTask').addEventListener('click', () => {
+document.querySelector('#submitBttn').addEventListener('click', () => {
   Interactions.addTask();
   const input = document.querySelector("#formTask input[type='text']");
   input.value = '';
@@ -27,7 +27,7 @@ const checkLocalInput = () => {
     }
   }
 };
-
+// window.localStorage.clear();
 const edit = function (taskH3) {
   const editInput = document.getElementById(`e${taskH3.id.substring(1)}`);
   const h3Text = document.getElementById(`d${taskH3.id.substring(1)}`);

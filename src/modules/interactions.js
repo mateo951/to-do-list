@@ -5,13 +5,24 @@ export default class Interactions {
   static editMode = false;
 
   static addTask() {
-    const inputData = document.getElementById('inputTask');
-    if (this.hasValue(inputData.value)) {
-      const newTask = new Task(inputData.value);
-      Tasks.tasksData.push(newTask);
-      this.updateDisplay(newTask);
-      this.CheckInput();
-    }
+    const inputValue = this.getInput();
+    if(!this.hasValue(inputValue)) return;
+    const newTask = this.createTask(inputValue);
+    this.pushNewTask(newTask);
+    this.updateDisplay(newTask);
+    this.CheckInput();
+  }
+
+  static getInput(){
+    return document.getElementById('inputTask').value;
+  }
+
+  static createTask(inputData) {
+    return new Task(inputData);
+  }
+
+  static pushNewTask(task) {
+    Tasks.tasksData.push(task);
   }
 
   static removeTask(task) {
@@ -44,9 +55,11 @@ export default class Interactions {
 
   static updateDisplay(task) {
     const ul = document.querySelector('#spawnTasks');
+    let completedStatus = Tasks.tasksData[task.index].completed ? "checked" : "";
+    let crossedStatus = completedStatus === "checked" ? "line-through" : "";
     ul.insertAdjacentHTML('beforeend', `<li id="l${task.index}">
-    <input class="checkbox" type="checkbox" id="${task.index}">
-    <h3 id="d${task.index}" onclick="toggleEdit(this)">${task.description}</h3>
+    <input class="checkbox" type="checkbox" id="${task.index}" ${completedStatus}>
+    <h3 id="d${task.index}" onclick="toggleEdit(this)" class="${crossedStatus}">${task.description}</h3>
     <input id="e${task.index}" class="edit editInput" onblur="toggleEdit(this)"></input>
     <img class="edit deleteIcon" onclick="removeTask(this)" id="i${task.index}" src="https://img.icons8.com/ios/50/000000/delete--v1.png"/>
     <img id="o${task.index}" src="https://img.icons8.com/ios-glyphs/30/000000/menu-2.png"/></li>`);
@@ -63,8 +76,10 @@ export default class Interactions {
     const checkbox = document.getElementById(task.index);
     checkbox.addEventListener('change', () => {
       task.completed = !task.completed;
+      Tasks.tasksData[task.index].completed = task.completed;
       const desc = document.getElementById(`d${task.index}`);
       desc.classList.toggle('line-through');
+      this.CheckInput();
     });
   }
 
