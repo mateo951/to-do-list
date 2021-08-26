@@ -1,28 +1,31 @@
 /* eslint-disable */
 import _, { intersection } from 'lodash'; /* eslint-enable */
 import './style.css';
-import Interactions from './modules/interactions.js';
-import Tasks from './modules/tasks.js';
+import interactions from './modules/interactions.js';
+import tasks from './modules/tasks.js';
 
-document.querySelector('#submitBttn').addEventListener('click', () => {
-  Interactions.addTask();
-  const input = document.querySelector("#formTask input[type='text']");
+// Refractor section start
+const inputHandler = () => {
+  if(interactions.validateInput(interactions.getInput())) {
+    interactions.updateDisplay(Tasks.getTasks()[Tasks.getLenght() - 1]);
+    interactions.addCheckboxEvent();
+    interactions.checkInput(); 
+  }
   input.value = '';
-});
+}
 
-document.querySelector('#formTask').addEventListener('submit', () => {
-  Interactions.addTask();
-  const input = document.querySelector("#formTask input[type='text']");
-  input.value = '';
-});
+const input = document.querySelector("#formTask input[type='text']");
+document.querySelector('#submitBttn').addEventListener('click', inputHandler);
+document.querySelector('#formTask').addEventListener('submit', inputHandler);
+// Refractor section end
 
 const checkLocalInput = () => {
   const data = JSON.parse(localStorage.getItem('data'));
   if (data !== null) {
-    Tasks.initializeTasks(data);
+    tasks.initializeTasks(data);
     for (let i = 0; i < data.length; i += 1) {
-      if (Interactions.hasValue(data[i])) {
-        Interactions.updateDisplay(data[i]);
+      if (interactions.hasValue(data[i])) {
+        interactions.updateDisplay(data[i]);
       }
     }
   }
@@ -36,13 +39,13 @@ const edit = function (taskH3) {
   const editLi = document.getElementById(`l${taskH3.id.substring(1)}`);
 
   if (taskH3 && editLi && editInput && h3Text && deleteIcon && optionIcon) {
-    Interactions.editMode = !Interactions.editMode;
-    if (editInput.value !== Tasks.tasksData[taskH3.id.substring(1)].description) {
-      if (!Interactions.editMode && editInput.value === '' && taskH3.tagName === 'INPUT') {
-        Interactions.editMode = !Interactions.editMode; /* eslint-disable-next-line */
+    interactions.editMode = !interactions.editMode;
+    if (editInput.value !== tasks.tasksData[taskH3.id.substring(1)].description) {
+      if (!interactions.editMode && editInput.value === '' && taskH3.tagName === 'INPUT') {
+        interactions.editMode = !interactions.editMode; /* eslint-disable-next-line */
         removeTask(taskH3);
-      } else if (Interactions.hasValue(editInput.value)) {
-        Interactions.updateDesc(editInput.value, taskH3.id.substring(1), h3Text);
+      } else if (interactions.hasValue(editInput.value)) {
+        interactions.updateDesc(editInput.value, taskH3.id.substring(1), h3Text);
       }
     }
 
@@ -51,21 +54,21 @@ const edit = function (taskH3) {
     optionIcon.classList.toggle('edit');
     editInput.classList.toggle('edit');
     deleteIcon.classList.toggle('edit');
-    if (Interactions.editMode) {
+    if (interactions.editMode) {
       editInput.value = h3Text.innerText;
       editInput.focus();
     }
   }
 };
-
+//window.localStorage.clear();
 window.toggleEdit = function (taskH3) {
   setTimeout(() => { edit(taskH3); }, 100);
 };
 
 window.removeTask = function (task) {
-  Interactions.editMode = !Interactions.editMode;
+  interactions.editMode = !interactions.editMode;
   const taskSelected = document.getElementById(task.id);
-  Interactions.removeTask(taskSelected.id.substring(1), false);
+  interactions.removeTask(taskSelected.id.substring(1), false);
 };
 
 const clearCompleted = () => {
@@ -73,14 +76,14 @@ const clearCompleted = () => {
   bttn.addEventListener('click', () => {
     const checkboxs = document.getElementsByClassName('checkbox');
     if (checkboxs) {
-      Tasks.tasksData = Tasks.tasksData.filter((task) => !task.completed);
+      tasks.tasksData = tasks.tasksData.filter((task) => !task.completed);
       const ul = document.getElementById('spawnTasks');
       ul.innerHTML = '';
-      for (let i = 0; i < Tasks.tasksData.length; i += 1) {
-        Tasks.tasksData[i].index = i;
-        Interactions.updateDisplay(Tasks.tasksData[i]);
+      for (let i = 0; i < tasks.tasksData.length; i += 1) {
+        tasks.tasksData[i].index = i;
+        interactions.updateDisplay(tasks.tasksData[i]);
       }
-      Interactions.CheckInput();
+      interactions.checkInput();
     }
   });
 };
