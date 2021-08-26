@@ -30,6 +30,36 @@ describe('Should add a new task', () => {
   })
 });
 
+describe('Should remove a task', () => {
+  test('remove existing task from list', () => {
+    // Interactions.rearrangeIds() = jest.fn();
+    console.log(tasks.getTasks());
+    console.log(document.body.innerHTML);
+    const Interactions.rearrangeIds = jest.fn()
+    const checkInput = jest.fn()
+    Interactions.removeTask(0)
+    expect(tasks.getLenght()).toEqual(2);
+    // expect(document.getElementById('spawnTasks').childNodes).toHaveLength(1);
+    // expect(tasks.getTasks()[0].description).toEqual('Clean my room');
+  });
+  // test('Checks for new task in localStorage', () => {
+  //   expect(JSON.parse(localStorage.getItem('tasks')).length).toBe(3);
+  // });
+  // test('Checks for new tasks in dom', () => {
+  //   Interactions.updateDisplay(tasks.getTasks()[0]);
+  //   expect(document.getElementById('spawnTasks').childNodes).toHaveLength(1);
+  // })
+});
+
+// const removeTask = (task) => {
+//   const liTask = document.getElementById(`l${task}`);
+//   // this.rearrangeIds(task);
+//   tasks.getTasks().splice(task, 1); // eslint-disable-next-line no-use-before-define
+//   // this.checkInput();
+//   liTask.remove();
+// }
+
+
 
 
 // describe('Add task method', () => {
