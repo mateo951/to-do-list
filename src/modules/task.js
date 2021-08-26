@@ -1,8 +1,7 @@
-import Tasks from "./tasks";
 export default class Task {
-  constructor(description) {
+  constructor(description, index) {
     this.description = description;
     this.completed = false;
-    this.index = Tasks.getLenght();
+    this.index = index;
   }
 }

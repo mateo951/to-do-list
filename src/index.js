@@ -6,13 +6,14 @@ import tasks from './modules/tasks.js';
 
 // Refractor section start
 const inputHandler = () => {
-  if(interactions.validateInput(interactions.getInput())) {
-    interactions.updateDisplay(Tasks.getTasks()[Tasks.getLenght() - 1]);
+  if (interactions.validateInput(interactions.getInput())) {
+    interactions.updateDisplay(tasks.getTasks()[tasks.getLenght() - 1]);
     interactions.addCheckboxEvent();
-    interactions.checkInput(); 
+    interactions.checkInput();
   }
+  // eslint-disable-next-line no-use-before-define
   input.value = '';
-}
+};
 
 const input = document.querySelector("#formTask input[type='text']");
 document.querySelector('#submitBttn').addEventListener('click', inputHandler);
@@ -30,8 +31,8 @@ const checkLocalInput = () => {
     }
   }
 };
-// window.localStorage.clear();
-const edit = function (taskH3) {
+
+const edit = (taskH3) => {
   const editInput = document.getElementById(`e${taskH3.id.substring(1)}`);
   const h3Text = document.getElementById(`d${taskH3.id.substring(1)}`);
   const deleteIcon = document.getElementById(`i${taskH3.id.substring(1)}`);
@@ -60,12 +61,11 @@ const edit = function (taskH3) {
     }
   }
 };
-//window.localStorage.clear();
-window.toggleEdit = function (taskH3) {
+window.toggleEdit = (taskH3) => {
   setTimeout(() => { edit(taskH3); }, 100);
 };
 
-window.removeTask = function (task) {
+window.removeTask = (task) => {
   interactions.editMode = !interactions.editMode;
   const taskSelected = document.getElementById(task.id);
   interactions.removeTask(taskSelected.id.substring(1), false);
