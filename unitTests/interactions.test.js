@@ -29,3 +29,37 @@ describe('Should add a new task', () => {
     expect(document.getElementById('spawnTasks').childNodes).toHaveLength(1);
   })
 });
+
+describe('Should remove a task', () => {
+  test('remove existing task from list', () => {
+    Interactions.rearrangeIds = jest.fn();
+    Interactions.checkInput = jest.fn();
+    Interactions.removeTask(0);
+    expect(tasks.getLenght()).toEqual(2);
+  });
+  test('Check for li removal in dom', () => {
+    // expect.assertions(3);
+    // console.log(document.getElementById('spawnTasks').childNodes);
+    Interactions.updateDisplay(tasks.getTasks()[0]);
+    // expect(document.getElementById('spawnTasks').childNodes).toHaveLength(1);
+    // Interactions.updateDisplay(tasks.getTasks()[1]);
+    // expect(document.getElementById('spawnTasks').childNodes).toHaveLength(2);
+    Interactions.rearrangeIds = jest.fn();
+    Interactions.checkInput = jest.fn();
+    Interactions.removeTask(0)
+    expect(document.getElementById('spawnTasks').childNodes).toHaveLength(0);
+
+    console.log(document.body.innerHTML)
+    // Interactions.rearrangeIds = jest.fn();
+    // Interactions.checkInput = jest.fn();
+    // Interactions.removeTask(0);
+    // console.log(document.getElementById('spawnTasks').childNodes);
+    // expect(document.getElementById('spawnTasks').childNodes).toHaveLength(1);
+  });
+});
+
+
+
+
+
+  
