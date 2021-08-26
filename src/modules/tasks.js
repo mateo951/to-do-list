@@ -7,6 +7,10 @@ export default class Tasks {
     this.tasksData = data;
   }
 
+  static clear() {
+    this.tasksData = [];
+  }
+
   static getTasks() {
     return this.tasksData;
   }

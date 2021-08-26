@@ -42,7 +42,12 @@ export default class Interactions {
     this.rearrangeIds(task);
     Tasks.getTasks().splice(task, 1); // eslint-disable-next-line no-use-before-define
     this.checkInput();
-    liTask.remove();
+    this.removeNode(liTask);
+    return liTask
+  }
+
+  static removeNode(node) {
+    node.remove();
   }
 
   static rearrangeIds(task) {
